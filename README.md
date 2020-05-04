@@ -5,4 +5,4 @@ https://ogwlpwa.azurewebsites.net
 [https://ogwlpwa.azurewebsites.net/api/alert](https://ogwlpwa.azurewebsites.net/api/alert) にアクセスすれば現在入っているデータを見ることができます。  
 そのほかは[こっち](https://github.com/freekani/ogw_lpwa)見てください。
 ### 注意
-鯖代の関係でDBもストレージも無いのでよくデータが揮発します。
+鯖代の関係でDBもストレージも無いので1分程度アクセスがないとデータが揮発します。
