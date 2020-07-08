@@ -65,7 +65,7 @@ namespace server.Controllers
                 return NotFound();
             }
 
-            return alertModel.Head + alertModel.Body;
+            return "0000" + alertModel.Head + alertModel.Body + "0000";
         }
 
         // PUT: api/Alert/5
