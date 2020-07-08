@@ -43,7 +43,8 @@ namespace server.Controllers
 
         [HttpGet("latest")]
 
-        public async Task<ActionResult<AlertModel>> GetLatestAlertModel(){
+        public async Task<ActionResult<AlertModel>> GetLatestAlertModel()
+        {
             var alertModel = await _context.AlertModels.LastOrDefaultAsync();
 
             if (alertModel == null)
@@ -52,6 +53,19 @@ namespace server.Controllers
             }
 
             return alertModel;
+        }
+
+        [HttpGet("latestforsigfox")]
+        public async Task<ActionResult<String>> GetLatestAlertforSigfox()
+        {
+            var alertModel = await _context.AlertModels.LastOrDefaultAsync();
+
+            if (alertModel == null)
+            {
+                return NotFound();
+            }
+
+            return alertModel.Body;
         }
 
         // PUT: api/Alert/5
@@ -92,6 +106,24 @@ namespace server.Controllers
         [HttpPost]
         public async Task<ActionResult<AlertModel>> PostAlertModel(AlertModel alertModel)
         {
+            _context.AlertModels.Add(alertModel);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetAlertModel), new { id = alertModel.Id }, alertModel);
+        }
+
+        [HttpGet("addtest")]
+        public async Task<ActionResult<AlertModel>> AddTest()
+        {
+            AlertModel alertModel;
+            if (_context.AlertModels.Count() == 0)
+            {
+                alertModel = new AlertModel() { Id = 1, Head = "12AF", Body = "334C" };
+            }
+            else
+            {
+                alertModel = new AlertModel() { Id = _context.AlertModels.Last().Id + 1, Head = "12AF", Body = "334C" };
+            }
             _context.AlertModels.Add(alertModel);
             await _context.SaveChangesAsync();
 
