@@ -6,3 +6,6 @@ https://ogwlpwa.azurewebsites.net
 そのほかは[こっち](https://github.com/freekani/ogw_lpwa)見てください。
 ### 注意
 鯖代の関係でDBもストレージも無いので1分程度アクセスがないとデータが揮発します。
+データが空っぽになってしまったら、
+https://ogwlpwa.azurewebsites.net/api/alert/addtest
+にアクセスしてデータを追加しても大丈夫です
