@@ -65,7 +65,7 @@ namespace server.Controllers
                 return NotFound();
             }
 
-            return "0000" + alertModel.Head + alertModel.Body + "0000";
+            return alertModel.Head + alertModel.Body;
         }
 
         // PUT: api/Alert/5
@@ -118,11 +118,11 @@ namespace server.Controllers
             AlertModel alertModel;
             if (_context.AlertModels.Count() == 0)
             {
-                alertModel = new AlertModel() { Id = 1, Head = "12AF", Body = "334C" };
+                alertModel = new AlertModel() { Id = 1, Head = "0000", Body = "1111" };
             }
             else
             {
-                alertModel = new AlertModel() { Id = _context.AlertModels.Last().Id + 1, Head = "12AF", Body = "334C" };
+                alertModel = new AlertModel() { Id = _context.AlertModels.Last().Id + 1, Head = "0000", Body = "1111" };
             }
             _context.AlertModels.Add(alertModel);
             await _context.SaveChangesAsync();
