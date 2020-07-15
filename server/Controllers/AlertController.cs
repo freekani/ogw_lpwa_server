@@ -1,4 +1,5 @@
 using System;
+using System.Text.Json;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -55,8 +56,8 @@ namespace server.Controllers
             return alertModel;
         }
 
-        [HttpGet("latestforsigfox")]
-        public async Task<ActionResult<String>> GetLatestAlertforSigfox()
+        [HttpPost("latestforsigfox")]
+        public async Task<ActionResult<String>> GetLatestAlertforSigfox(CallbackForSigfoxModel callback)
         {
             var alertModel = await _context.AlertModels.LastOrDefaultAsync();
 
@@ -64,8 +65,9 @@ namespace server.Controllers
             {
                 return NotFound();
             }
+            var returnModel = new ReturnForSigfoxModel() { downlinkData = alertModel.Head + alertModel.Body };
 
-            return alertModel.Head + alertModel.Body;
+            return "{\""+callback.DeviceId+"\":"+JsonSerializer.Serialize(returnModel)+"}";
         }
 
         // PUT: api/Alert/5

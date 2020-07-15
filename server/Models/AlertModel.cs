@@ -1,3 +1,5 @@
+using System;
+[Serializable]
 public class AlertModel
 {
     public ulong Id { get; set; }
