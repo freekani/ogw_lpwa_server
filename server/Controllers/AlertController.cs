@@ -58,6 +58,7 @@ namespace server.Controllers
 
 
         [HttpGet("latestforsigfox")]
+        [Produces("application/json")]
         public async Task<ActionResult<String>> GetLatestAlertforSigfox()
         {
             var alertModel = await _context.AlertModels.LastOrDefaultAsync();
@@ -67,6 +68,7 @@ namespace server.Controllers
                 return NotFound();
             }
             var returnModel = new ReturnForSigfoxModel() { downlinkData = alertModel.Head + alertModel.Body };
+
 
             return "{\"" + "764462" + "\":" + JsonSerializer.Serialize(returnModel) + "}";
         }
@@ -80,6 +82,7 @@ namespace server.Controllers
                 return NotFound();
             }
             var returnModel = new ReturnForSigfoxModel() { downlinkData = alertModel.Head + alertModel.Body };
+
 
             return "{\"" + callback.DeviceId + "\":" + JsonSerializer.Serialize(returnModel) + "}";
         }
