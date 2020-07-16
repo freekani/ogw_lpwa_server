@@ -6,5 +6,7 @@ using System.ComponentModel.DataAnnotations;
 public class ReturnForSigfoxModel
 {
     [Key]
+    public string deviceId{get;set;}
+    [Key]
     public string downlinkData { get; set; }
 }

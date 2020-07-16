@@ -56,9 +56,9 @@ namespace server.Controllers
             return alertModel;
         }
 
-
+        [Produces("application/json")]
         [HttpGet("latestforsigfox")]
-        public async Task<ActionResult<Dictionary<string,ReturnForSigfoxModel>>> GetLatestAlertforSigfox()
+        public async Task<ActionResult<Dictionary<string, ReturnForSigfoxModel>>> GetLatestAlertforSigfox()
         {
             var alertModel = await _context.AlertModels.LastOrDefaultAsync();
 
@@ -66,8 +66,8 @@ namespace server.Controllers
             {
                 return NotFound();
             }
-            var returnModel = new Dictionary<string,ReturnForSigfoxModel>();
-            returnModel.Add("764462",new ReturnForSigfoxModel() { downlinkData = alertModel.Head + alertModel.Body });
+            var returnModel = new Dictionary<string, ReturnForSigfoxModel>();
+            returnModel.Add("764462", new ReturnForSigfoxModel() { downlinkData = alertModel.Head + alertModel.Body });
             //var returnModel = new ReturnForSigfoxModel() { downlinkData = alertModel.Head + alertModel.Body };
 
             //return JsonSerializer.Deserialize<new{string a =""}>("{\"" + "764462" + "\":" + JsonSerializer.Serialize(returnModel) + "}");
