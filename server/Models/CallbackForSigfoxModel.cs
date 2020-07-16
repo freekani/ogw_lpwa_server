@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations;
 [Serializable]
 public class CallbackForSigfoxModel
 {
-    //[Key]
-    //public string DeviceId { get; set; }
+    [NonSerialized]
+    public string DeviceId;
     [Key]
     public string Data { get; set; }
 }
