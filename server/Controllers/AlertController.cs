@@ -73,6 +73,7 @@ namespace server.Controllers
             //return JsonSerializer.Deserialize<new{string a =""}>("{\"" + "764462" + "\":" + JsonSerializer.Serialize(returnModel) + "}");
             return returnModel;
         }
+        /*
         [HttpPost("latestforsigfox")]
         public async Task<ActionResult<String>> GetLatestAlertforSigfox(CallbackForSigfoxModel callback)
         {
@@ -87,7 +88,7 @@ namespace server.Controllers
 
             return "{\"" + callback.DeviceId + "\":" + JsonSerializer.Serialize(returnModel) + "}";
         }
-
+*/
         // PUT: api/Alert/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
