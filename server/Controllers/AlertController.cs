@@ -70,7 +70,7 @@ namespace server.Controllers
             var returnModel = new ReturnForSigfoxModel() { downlinkData = alertModel.Head + alertModel.Body };
 
 
-            return "{\"" + "764462" + "\":" + JsonSerializer.Serialize(returnModel) + "}";
+            return JsonSerializer.Serialize("{\"" + "764462" + "\":" + JsonSerializer.Serialize(returnModel) + "}");
         }
         [HttpPost("latestforsigfox")]
         public async Task<ActionResult<String>> GetLatestAlertforSigfox(CallbackForSigfoxModel callback)
