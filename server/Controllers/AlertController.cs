@@ -73,6 +73,23 @@ namespace server.Controllers
             //return JsonSerializer.Deserialize<new{string a =""}>("{\"" + "764462" + "\":" + JsonSerializer.Serialize(returnModel) + "}");
             return returnModel;
         }
+
+        [HttpPost("latestforsigfox")]
+        public async Task<ActionResult<Dictionary<string, ReturnForSigfoxModel>>> GetLatestAlertforSigfox_forPost(CallbackForSigfoxModel callback)
+        {
+            var alertModel = await _context.AlertModels.LastOrDefaultAsync();
+
+            if (alertModel == null)
+            {
+                return NotFound();
+            }
+            var returnModel = new Dictionary<string, ReturnForSigfoxModel>();
+            returnModel.Add(callback.DeviceId, new ReturnForSigfoxModel() { downlinkData = alertModel.Head + alertModel.Body });
+            //var returnModel = new ReturnForSigfoxModel() { downlinkData = alertModel.Head + alertModel.Body };
+
+            //return JsonSerializer.Deserialize<new{string a =""}>("{\"" + "764462" + "\":" + JsonSerializer.Serialize(returnModel) + "}");
+            return returnModel;
+        }
         /*
         [HttpPost("latestforsigfox")]
         public async Task<ActionResult<String>> GetLatestAlertforSigfox(CallbackForSigfoxModel callback)
