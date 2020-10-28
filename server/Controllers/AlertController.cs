@@ -156,7 +156,7 @@ namespace server.Controllers
             AlertModel alertModel;
             if (_context.AlertModels.Count() == 0)
             {
-                alertModel = new AlertModel() { Id = 1, Head = "0000", Body = "1111" };
+                alertModel = new AlertModel() { Id = 1, Head = "010203", Body = "040506" };
             }
             else
             {
