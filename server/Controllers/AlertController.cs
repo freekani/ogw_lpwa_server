@@ -156,11 +156,11 @@ namespace server.Controllers
             AlertModel alertModel;
             if (_context.AlertModels.Count() == 0)
             {
-                alertModel = new AlertModel() { Id = 1, Head = "010203", Body = "040506" };
+                alertModel = new AlertModel() { Id = 1, Head = "7b1048c9", Body = "4283db0a" };
             }
             else
             {
-                alertModel = new AlertModel() { Id = _context.AlertModels.Last().Id + 1, Head = "0000", Body = "1111" };
+                alertModel = new AlertModel() { Id = _context.AlertModels.Last().Id + 1, Head = "7b1048c9", Body = "4283db0a" };
             }
             _context.AlertModels.Add(alertModel);
             await _context.SaveChangesAsync();
